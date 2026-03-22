@@ -1,8 +1,8 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "LEVENDER V2 | PET SIM 99",
-   LoadingTitle = "Ambatron Executing...",
+   Name = "LEVENDER V2 | PS99",
+   LoadingTitle = "Ambatron Loading...",
    LoadingSubtitle = "by Tuan Nando",
    ConfigurationSaving = {
       Enabled = true,
@@ -11,8 +11,7 @@ local Window = Rayfield:CreateWindow({
    }
 })
 
-local MainTab = Window:CreateTab("Main Menu", 4483362458) -- Main Icon
-
+local MainTab = Window:CreateTab("Main Menu", 4483362458)
 local Section = MainTab:CreateSection("Auto Features")
 
 local HatchToggle = MainTab:CreateToggle({
@@ -22,10 +21,10 @@ local HatchToggle = MainTab:CreateToggle({
    Callback = function(Value)
       _G.AutoHatch = Value
       if Value then
-          spawn(function()
+          task.spawn(function()
               while _G.AutoHatch do
                   local args = {
-                      [1] = "Spawn", -- Change this to your Egg Area
+                      [1] = "Spawn",
                       [2] = 1
                   }
                   game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Eggs_RequestPurchase"):InvokeServer(unpack(args))
@@ -38,15 +37,7 @@ local HatchToggle = MainTab:CreateToggle({
 
 Rayfield:Notify({
    Title = "Script Loaded!",
-   Content = "Welcome back, Tuan Nando! Ready to hatch?",
+   Content = "Welcome back, Tuan Nando!",
    Duration = 5,
    Image = 4483362458,
-   Actions = {
-      Ignore = {
-         Name = "Okay!",
-         Callback = function()
-            print("User Clicked Okay")
-         end
-      },
-   },
 })
